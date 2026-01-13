@@ -1,0 +1,9 @@
+# Ignorar carpetas de datos de base de datos
+mysql_datos/
+data/
+mysql/
+.idea/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
