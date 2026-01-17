@@ -1,6 +1,7 @@
-CREATE TABLE Escuela (
+CREATE TABLE escuela (
     id_escuela INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    id_facultad INT NOT NULL,
-    FOREIGN KEY (id_facultad) REFERENCES Facultad(id_facultad)
+    nombre_escuela VARCHAR(150) NOT NULL,
+    id_facultad INT,
+    FOREIGN KEY (id_facultad) REFERENCES facultad(id_facultad)
 );
+

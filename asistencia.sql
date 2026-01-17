@@ -1,10 +1,8 @@
-CREATE TABLE Asistencia (
-    id_asistencia BIGINT AUTO_INCREMENT PRIMARY KEY,
-    id_sesion INT NOT NULL,
-    id_estudiante INT NOT NULL,
-    hora_llegada TIME,
-    estado ENUM('Presente', 'Ausente', 'Justificado', 'Retirado') NOT NULL,
-    FOREIGN KEY (id_sesion) REFERENCES Sesion_Clase(id_sesion),
-    FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante),
-    UNIQUE KEY uk_asistencia_estudiante (id_sesion, id_estudiante)
+CREATE TABLE asistencia (
+    id_asistencia INT AUTO_INCREMENT PRIMARY KEY,
+    id_sesion INT,
+    nombre_estudiante VARCHAR(150) NOT NULL, 
+    estado VARCHAR(20) NOT NULL CHECK (estado IN ('Presente', 'Ausente', 'Tarde', 'Justificado')),
+    hora_llegada TIME,               -- Cambiado de VARCHAR a TIME
+    FOREIGN KEY (id_sesion) REFERENCES sesion_clase(id_sesion)
 );

@@ -1,9 +1,11 @@
-CREATE TABLE Participacion_Clase (
+CREATE TABLE participacion_clase (
     id_participacion INT AUTO_INCREMENT PRIMARY KEY,
-    id_sesion INT NOT NULL,
-    id_estudiante INT NOT NULL,
-    tipo_participacion ENUM('Pregunta', 'Aporte', 'Exposicion') NOT NULL,
-    puntos_extra DECIMAL(4,2) DEFAULT 0.00,
-    FOREIGN KEY (id_sesion) REFERENCES Sesion_Clase(id_sesion),
-    FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante)
+    id_sesion INT,
+    nombre_estudiante VARCHAR(150) NOT NULL,
+    tipo_participacion VARCHAR(50) CHECK (tipo_participacion IN ('Pregunta', 'Aporte', 'Ejercicio', 'Otro')),
+    puntos_puntuacion INT,
+    comentario VARCHAR(1000),
+    FOREIGN KEY (id_sesion) REFERENCES sesion_clase(id_sesion)
 );
+
+select* from participacion_clase;

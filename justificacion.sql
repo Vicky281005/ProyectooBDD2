@@ -1,8 +1,6 @@
-CREATE TABLE Justificacion (
+CREATE TABLE justificacion (
     id_justificacion INT AUTO_INCREMENT PRIMARY KEY,
-    id_asistencia BIGINT NOT NULL,
-    fecha_solicitud DATE NOT NULL,
-    motivo TEXT NOT NULL,
-    estado ENUM('Pendiente', 'Aprobada', 'Rechazada') DEFAULT 'Pendiente',
-    FOREIGN KEY (id_asistencia) REFERENCES Asistencia(id_asistencia)
+    id_asistencia INT,
+    motivo VARCHAR(1000) NOT NULL,
+    FOREIGN KEY (id_asistencia) REFERENCES asistencia(id_asistencia)
 );
