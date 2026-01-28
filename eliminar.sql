@@ -1,21 +1,22 @@
--- NIVEL 6: Tablas finales
+-- NIVEL 7: Tablas finales
 DROP TABLE IF EXISTS justificacion;
-DROP TABLE IF EXISTS incidencia;
 DROP TABLE IF EXISTS participacion_clase;
+DROP TABLE IF EXISTS incidencia;
 
--- NIVEL 5: Depende de Sesión/Asistencia
+-- NIVEL 6: Depende de Sesión y Estudiante
 DROP TABLE IF EXISTS asistencia;
 
--- NIVEL 4: Depende de Escuela
+-- NIVEL 5: Depende de Escuela
 DROP TABLE IF EXISTS sesion_clase;
+DROP TABLE IF EXISTS estudiante;
 
--- NIVEL 3: Depende de Facultad
+-- NIVEL 4: Depende de Facultad
 DROP TABLE IF EXISTS escuela;
 
--- NIVEL 2: Depende de Sede
+-- NIVEL 3: Depende de Sede
 DROP TABLE IF EXISTS facultad;
 
--- NIVEL 1: La base
+-- NIVEL 2: Base
 DROP TABLE IF EXISTS sede;
 
 
@@ -23,29 +24,31 @@ DROP TABLE IF EXISTS sede;
 
 
 
--- 1. APAGAMOS LA SEGURIDAD (Para poder borrar en el orden que pediste)
-SET FOREIGN_KEY_CHECKS = 0; 
 
--- 2. LIMPIEZA POR JERARQUÍA (Reinicio de IDs a 1)
--- Nivel 1: La base
+-- 1. APAGAMOS LA SEGURIDAD (Para poder borrar en el orden que pediste)
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- NIVEL 1: Base
 TRUNCATE TABLE sede;
 
--- Nivel 2: Depende de Sede
+-- NIVEL 2
 TRUNCATE TABLE facultad;
 
--- Nivel 3: Depende de Facultad
+-- NIVEL 3
 TRUNCATE TABLE escuela;
 
--- Nivel 4: Depende de Escuela
+-- NIVEL 4
+TRUNCATE TABLE estudiante;
 TRUNCATE TABLE sesion_clase;
 
--- Nivel 5: Depende de Sesión
+-- NIVEL 5
 TRUNCATE TABLE asistencia;
 
--- Nivel 6: Tablas finales (Dependen de Asistencia o Sesión)
+-- NIVEL 6
 TRUNCATE TABLE justificacion;
-TRUNCATE TABLE incidencia;
 TRUNCATE TABLE participacion_clase;
+TRUNCATE TABLE incidencia;
+
 
 -- 3. ENCENDEMOS LA SEGURIDAD
 SET FOREIGN_KEY_CHECKS = 1;
