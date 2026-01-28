@@ -5,3 +5,5 @@ CREATE TABLE escuela (
     FOREIGN KEY (id_facultad) REFERENCES facultad(id_facultad)
 );
 
+-- select * from escuela;
+

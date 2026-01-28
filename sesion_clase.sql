@@ -1,4 +1,3 @@
-
 CREATE TABLE sesion_clase (
     id_sesion INT AUTO_INCREMENT PRIMARY KEY,
     id_escuela INT,

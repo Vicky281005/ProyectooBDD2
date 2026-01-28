@@ -1,2 +1,7 @@
-explain analyze select * 
-FROM sede s join  facultad f on f.id_sede=s.id_sede
+explain analyze 
+select *
+FROM sede WHERE region='Sur';
+
+explain 
+select *
+from sede where region='Sur';
