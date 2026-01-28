@@ -25,7 +25,7 @@ show INDEX FROM asistencia;
 -- Visualizacion Estadisticas
 select *
 FROM sys.schema_index_statistics
-where table_schema='NuevoEsquema'
+where table_schema='proyectobdd2'
 AND table_name= 'asistencia'
 order by rows_selected DESC;
 
@@ -38,7 +38,7 @@ WHERE tipo_participacion='Pregunta';
 -- SIN INDEX
 explain analyze
 select *
-FROM  NuevoEsquema.participacion_clase IGNORE INDEX (index_est_tip_part)
+FROM proyectobdd2.participacion_clase IGNORE INDEX (index_est_tip_part)
 WHERE tipo_participacion='Pregunta';
 
 
